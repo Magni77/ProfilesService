@@ -10,7 +10,6 @@ class User(AbstractUser):
 
 
 class Profile(models.Model):
-    # id = models.CharField(primary_key=True, max_length=32)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True)
     first_name = models.CharField(max_length=255, null=True, blank=True)
     last_name = models.CharField(max_length=255, null=True, blank=True)
