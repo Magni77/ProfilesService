@@ -46,7 +46,8 @@ class TokenAuthentication(BaseAuthentication):
             user, created = User.objects.get_or_create(
                 email=email,
                 id=user_id,
-                is_active=True
+                username=user_id,
+                is_active=True,
             )
             user.set_unusable_password()
 

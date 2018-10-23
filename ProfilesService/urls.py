@@ -17,12 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token
 
-from profiles.views import ProfileView
+from profiles.views import ProfileView, ProfilesBasicsView, ProfileListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api-token-auth/', obtain_jwt_token),
     path('api-token-verify/', verify_jwt_token),
+    path('profiles', ProfileListView.as_view()),
+    path('profiles/list', ProfilesBasicsView.as_view()),
     path('profiles/<user_id>', ProfileView.as_view()),
 ]
