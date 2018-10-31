@@ -1,6 +1,5 @@
 from django.db.models import Q
 from rest_framework.generics import RetrieveUpdateAPIView, ListAPIView
-from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -11,7 +10,6 @@ from profiles.serializers import ProfileSerializer, BasicProfileSerializer
 class ProfileView(RetrieveUpdateAPIView):
     serializer_class = ProfileSerializer
     lookup_field = 'user_id'
-    permission_classes = AllowAny,
 
     def get_queryset(self):
         return Profile.objects.all()
@@ -27,7 +25,6 @@ class ProfilesBasicsView(APIView):
 
 class ProfileListView(ListAPIView):
     serializer_class = ProfileSerializer
-    permission_classes = AllowAny,
 
     def get_queryset(self):
         queryset = Profile.objects.all()
